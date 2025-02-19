@@ -1,0 +1,256 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="1000"
+		xmlns:local="using:AvaloniaSample"
+		xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+        x:Class="Diagramm.MainWindow"
+		x:CompileBindings="False"
+        Title="Модель хищник-жертва">
+
+	<Border BorderThickness="2"
+			BorderBrush="Aqua">
+
+		<Grid ShowGridLines="False"
+			  Name="DiagrammName"
+			  ColumnDefinitions="0.42*,*"
+			  RowDefinitions="*,*">
+
+			<StackPanel Grid.Column="0"
+						Grid.RowSpan="3"
+						Margin="20">
+
+				<TextBlock Text="Входные данные: "
+						   FontWeight="Bold"
+						   HorizontalAlignment="Left"
+						   VerticalAlignment="Center"/>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="ε,ед\год: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Height="32"
+							 Text="{Binding PreyGrowthRate, Mode=TwoWay}"
+							 Name="eEdInGod"
+							 KeyUp="TextBox_KeyUp"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="β,ед\год: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Name="vEdGod"
+							 Height="32"
+							 KeyUp="TextBox_KeyUp"
+							 Text="{Binding PredatorDeathRate, Mode=TwoWay}"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="α,ед\год: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Height="32"
+							 KeyUp="TextBox_KeyUp"
+							 Text="{Binding PredationRate, Mode=TwoWay}"
+							 Name="aEdGod"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="δ,ед\год: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Height="32"
+							 KeyUp="TextBox_KeyUp"
+							 Name="bEdGod"
+							 Text="{Binding PredatorGrowthRate, Mode=TwoWay}"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<TextBlock Text="Цикл 1."
+						   Margin="0 60 0 0"
+						   FontWeight="Bold"
+						   HorizontalAlignment="Left"
+						   VerticalAlignment="Center"/>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="Кол-во Жертв: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Height="32"
+							 KeyUp="TextBox_KeyUp"
+							 Text="{Binding InitialPrey1}"
+							 Name="CountShert1"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="Кол-во Хищников: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Height="32"
+							 KeyUp="TextBox_KeyUp"
+							 Text="{Binding InitialPredator1}"
+							 Name="CountHishn1"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<TextBlock Text="Цикл 2."
+						   Margin="0 10 0 0"
+						   FontWeight="Bold"
+						   HorizontalAlignment="Left"
+						   VerticalAlignment="Center"/>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="Кол-во Жертв: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 KeyUp="TextBox_KeyUp"
+							 Height="32"
+							 Text="{Binding InitialPrey2}"
+							 Name="CountShert2"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="Кол-во Хищников: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Height="32"
+							 KeyUp="TextBox_KeyUp"
+							 Text="{Binding InitialPredator2}"
+							 Name="CountHishn2"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<TextBlock Text="Цикл 3."
+						   Margin="0 10 0 0"
+						   FontWeight="Bold"
+						   HorizontalAlignment="Left"
+						   VerticalAlignment="Center"/>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="Кол-во Жертв: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Height="32"
+							 KeyUp="TextBox_KeyUp"
+							 Name="CountShert3"
+							 Text="{Binding InitialPrey3}"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+				<DockPanel Margin="0 10 0 0">
+
+					<TextBlock Text="Кол-во Хищников: "
+							   HorizontalAlignment="Left"
+							   VerticalAlignment="Center"/>
+
+					<TextBox Width="120"
+							 Height="32"
+							 KeyUp="TextBox_KeyUp"
+							 Text="{Binding InitialPredator3}"
+							 Name="CountHishn3"
+							 HorizontalAlignment="Right"
+							 VerticalAlignment="Center"/>
+
+				</DockPanel>
+
+			</StackPanel>
+
+			<StackPanel Grid.Column="1"
+						Grid.Row="0"
+						Margin="20"
+						VerticalAlignment="Top"
+						HorizontalAlignment="Center">
+
+				<TextBlock Text="Фазовый портрет"
+						   FontSize="20"
+						   HorizontalAlignment="Center"
+						   FontWeight="Bold"/>
+
+				<Border BorderThickness="3"
+						BorderBrush="Aqua"
+						Width="550"
+						Height="420">
+					<lvc:CartesianChart Name="Portret"
+							Series="{Binding PhasePortraitSeries}"/>
+
+				</Border>
+			</StackPanel>
+
+			<StackPanel Grid.Column="1"
+						Grid.Row="1"
+						Margin="20"
+						VerticalAlignment="Top"
+						HorizontalAlignment="Center">
+
+				<TextBlock Text="График"
+						   FontSize="20"
+						   HorizontalAlignment="Center"
+						   FontWeight="Bold"/>
+
+				<Border BorderThickness="3"
+						BorderBrush="Aqua"
+						Width="550"
+						Height="420">
+
+					<lvc:CartesianChart Name="Graph"
+										Series="{Binding PopulationGraphSeries}"/>
+
+				</Border>
+
+			</StackPanel>
+
+		</Grid>
+	</Border>
+
+</Window>

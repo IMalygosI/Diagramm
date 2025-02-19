@@ -1,0 +1,23 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Diagramm.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+
+		<Style Selector="Window">
+			
+			<Setter Property="WindowStartupLocation" Value="CenterScreen"/>
+			<Setter Property="Background" Value="White"/>
+			
+			<Setter Property="MaxHeight" Value="1000"/>
+			<Setter Property="MinHeight" Value="1000"/>
+			<Setter Property="MaxWidth" Value="1000"/>
+			<Setter Property="MinWidth" Value="1000"/>
+			
+		</Style>
+		
+        <FluentTheme />
+    </Application.Styles>
+</Application>
