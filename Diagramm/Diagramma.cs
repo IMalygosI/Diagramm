@@ -41,7 +41,19 @@ namespace Diagramm
         public double InitialPrey3 => _initialPrey3;
         public double InitialPredator3 => _initialPredator3;
 
-        // Конструктор для инициализации модели
+        /// <summary>
+        /// Конструктор для инициализации модели
+        /// </summary>
+        /// <param name="preyGrowthRate"></param>
+        /// <param name="predatorDeathRate"></param>
+        /// <param name="predationRate"></param>
+        /// <param name="predatorGrowthRate"></param>
+        /// <param name="initialPrey1"></param>
+        /// <param name="initialPredator1"></param>
+        /// <param name="initialPrey2"></param>
+        /// <param name="initialPredator2"></param>
+        /// <param name="initialPrey3"></param>
+        /// <param name="initialPredator3"></param>
         public Diagramma(double preyGrowthRate, double predatorDeathRate, double predationRate, double predatorGrowthRate,
                          double initialPrey1, double initialPredator1,
                          double initialPrey2, double initialPredator2,
@@ -79,7 +91,9 @@ namespace Diagramm
             ];
         }
 
-        // Свойства для привязки данных в XAML
+        /// <summary>
+        /// Свойства для привязки данных в XAML
+        /// </summary>
         public ISeries[] PhasePortraitSeries { get; set; } =
             [
                 new LineSeries<ObservablePoint>
@@ -93,7 +107,11 @@ namespace Diagramm
                 }
             ];
 
-        // Метод для расчета популяций жертв и хищников
+        /// <summary>
+        /// Метод для расчета популяций жертв и хищников
+        /// </summary>
+        /// <param name="initialPrey"></param>
+        /// <param name="initialPredator"></param>
         private void CalculatePopulation(double initialPrey, double initialPredator)
         {
             List<ObservablePoint> generation = new();
@@ -105,7 +123,9 @@ namespace Diagramm
 
             for (int i = 0; i < 150; i++)
             {
+                // Math.Round - Округляем значения до ближайшего целого.
                 double nextPrey = Math.Round((double)((_preyGrowthRate - _predationRate * generation[i].Y) * generation[i].X + generation[i].X), 2);
+
                 generation.Add(new ObservablePoint()
                 {
                     X = nextPrey,
@@ -115,7 +135,10 @@ namespace Diagramm
             _phasePoints.AddRange(generation);
         }
 
-        // Метод для инициализации фазового портрета
+        /// <summary>
+        /// Метод для инициализации фазового портрета
+        /// </summary>
+        /// <returns></returns>
         private List<ObservablePoint> InitializePhasePortrait()
         {
             _phasePoints.Clear();
@@ -126,7 +149,9 @@ namespace Diagramm
             return _phasePoints;
         }
 
-        // Метод для инициализации графиков популяций
+        /// <summary>
+        /// Метод для инициализации графиков популяций
+        /// </summary>
         private void InitializePopulationGraphs()
         {
             _predatorPopulation.Clear();
